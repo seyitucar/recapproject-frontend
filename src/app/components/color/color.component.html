@@ -1,6 +1,17 @@
 <ul class="list-group">
-  <li class="list-group-item list-group-item-secondary" aria-current="true">Renkler</li>
-  <li *ngFor="let color of colors" class="list-group-item">
-    {{color.colorName}}
+  <li (click)="cleanCurrentColor()" [class]="getAllColorClass()" routerLink="/cars">Tümünü Gör</li>
+  <li class="list-group-item list-group-item-secondary" aria-current="true">
+    Renkler
+  </li>
+  <li
+    (click)="setCurrentColor(color)"
+    routerLink="/color/{{ color.id }}"
+    *ngFor="let color of colors"
+    [class]="getCurrentColorClass(color)"
+  >
+    {{ color.colorName }}
   </li>
 </ul>
+<br />
+
+<h5 *ngIf="currentColor">{{ currentColor.colorName }} seçtiniz</h5>

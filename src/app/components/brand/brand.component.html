@@ -1,6 +1,11 @@
 <ul class="list-group">
-  <li class="list-group-item list-group-item-secondary" aria-current="true">Markalar</li>
-  <li *ngFor="let brand of brands" class="list-group-item">
-    {{ brand.brandName }}
-  </li>
+  <li (click)="cleanCurrentBrand()" [class]="getAllBrandClass()" routerLink="/cars">Tümünü Gör</li>
+  <li  class="list-group-item list-group-item-secondary" aria-current="true">Markalar</li>
+  <li (click)="setCurrentBrand(brand)"
+  routerLink="/brand/{{brand.id}}"
+   *ngFor="let brand of brands"
+  [class]="getCurrentBrandClass(brand)">
+  {{brand.brandName }}</li>
 </ul>
+
+<h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz</h5>

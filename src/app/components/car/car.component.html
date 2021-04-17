@@ -6,11 +6,20 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araç Ara!</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araç adı giriniz">
+</div>
+
+<div *ngIf="filterText.length>1" class="alert alert-warning">
+{{filterText}} aradınız
+</div>
+
 <div class="row" *ngIf="dataLoaded == true">
   <div
-    *ngFor="let car of cars"
+    *ngFor="let car of cars | filterPipe:filterText" 
     class="card col-3"
-    style="width: 30%; margin: 8px"
+    style="width: 30%; margin: 8px" 
   >
     <img
       src="{{ carImageBasePath }}{{ getCarImage(car) }}"
@@ -18,18 +27,19 @@
       alt="CarImage"
     />
     <div class="card-body">
-      <h5 class="card-title">{{ car.brandName }} {{ car.carName }}</h5>
+      <h5 class="card-title">{{ car.brandName | uppercase}} {{ car.carName }}</h5>
       <p class="card-text">{{ car.description }}</p>
     </div>
     <section style="float: inline-end; margin-bottom: 8px">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Model Year : {{ car.modelYear }}</li>
-        <li class="list-group-item">Price : {{ car.dailyPrice }} TL / day</li>
+        <li class="list-group-item">Price : {{ car.dailyPrice | currency }} / day</li>
+        <li class="list-group-item">Taxed Price : {{ car.dailyPrice | vatAdded:18 | currency }} / day</li>
         <li class="list-group-item">Color : {{ car.colorName }}</li>
       </ul>
       <div class="card-body">
         <section style="float: right">
-          <button type="button" class="btn btn-secondary">Rent</button>
+          <button (click)="addToCart(car)" class="btn btn-success">Rent</button>
         </section>
         <section style="float: left">
           <button
@@ -45,7 +55,7 @@
   </div>
 </div>
 
-<table *ngIf="dataLoaded != false" class="table">
+<table class="table">
   <thead class="table-secondary">
     <tr>
       <th scope="col">Id</th>
@@ -53,19 +63,23 @@
       <th scope="col">Color Name></th>
       <th scope="col">Brand Name</th>
       <th scope="col">Daily Price</th>
+      <th scope="col">Taxed Price</th>
       <th scope="col">Model Year</th>
       <th scope="col">Description</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of cars">
+    <tr *ngFor="let car of cars | filterPipe:filterText">
       <td>{{ car.id }}</td>
       <td>{{ car.carName }}</td>
       <td>{{ car.colorName }}</td>
       <td>{{ car.brandName }}</td>
-      <td>{{ car.dailyPrice }}</td>
+      <td>{{ car.dailyPrice | currency }}</td>
+      <td>{{ car.dailyPrice | vatAdded:18 | currency  }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.description }}</td>
+      <td><button (click)="addToCart(car)" class="btn btn-success">Rent</button></td>
     </tr>
   </tbody>
 </table>

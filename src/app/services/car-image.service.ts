@@ -9,12 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class CarImageService {
 
-  apiUrl = "https://localhost:44350/api/";
+  apiUrl = "https://localhost:44350/api/carImages/";
   constructor(private httpClient: HttpClient) { }
 
   getCarImageByCarId(carId: number): Observable<ListResponseModel<CarImage>>{
-    let newApiUrl = this.apiUrl + "carImages/getimagesbycarid?id="+carId;
-
+    let newApiUrl = this.apiUrl + "getimagesbycarid?id=" + carId;
     return this.httpClient.get<ListResponseModel<CarImage>>(newApiUrl);
   }
 }

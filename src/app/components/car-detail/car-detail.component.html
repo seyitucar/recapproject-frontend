@@ -1,9 +1,4 @@
 <div class="card mb-3">
-  <div *ngIf="carDetail" class="card-header text-center">
-    <strong>
-        {{carDetail.brandName}} - {{carDetail.modelYear}}
-    </strong>
-  </div>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div *ngFor="let image of carImages let i = index" [class]="sliderItemActive(i)">

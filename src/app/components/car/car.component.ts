@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
-import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -13,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class CarComponent implements OnInit {
   cars: Car[] = [];
   carImageBasePath = "https://localhost:44350/Images/";
-  dataLoaded = false;
+  dataLoaded = true;
 
   constructor(private carService:CarService, private activatedRouted:ActivatedRoute) {}
 
@@ -49,6 +48,7 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     })
   }
+  
 
   getCarImage(car:Car){
 

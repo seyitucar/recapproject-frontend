@@ -6,13 +6,52 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
-<table *ngIf="dataLoaded != false" class="table">
+<div class="row" *ngIf="dataLoaded == true">
+  <div
+    *ngFor="let car of cars"
+    class="card col-3"
+    style="width: 30%; margin: 8px"
+  >
+    <img
+      src="{{ carImageBasePath }}{{ getCarImage(car) }}"
+      class="card-img-top"
+      alt="CarImage"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ car.brandName }} {{ car.carName }}</h5>
+      <p class="card-text">{{ car.description }}</p>
+    </div>
+    <section style="float: inline-end; margin-bottom: 8px">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Model Year : {{ car.modelYear }}</li>
+        <li class="list-group-item">Price : {{ car.dailyPrice }} TL / day</li>
+        <li class="list-group-item">Color : {{ car.colorName }}</li>
+      </ul>
+      <div class="card-body">
+        <section style="float: right">
+          <button type="button" class="btn btn-secondary">Rent</button>
+        </section>
+        <section style="float: left">
+          <button
+            type="button"
+            routerLink="/cars/cardetail/{{ car.id }}"
+            class="btn btn-secondary"
+          >
+            Details
+          </button>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- <table *ngIf="dataLoaded != false" class="table">
   <thead class="table-secondary">
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Car Name</th>
+      <th scope="col">Color Name></th>
       <th scope="col">Brand Name</th>
-      <th scope="col">Color Name</th>
       <th scope="col">Daily Price</th>
       <th scope="col">Model Year</th>
       <th scope="col">Description</th>
@@ -22,36 +61,11 @@
     <tr *ngFor="let car of cars">
       <td>{{ car.id }}</td>
       <td>{{ car.carName }}</td>
-      <td>{{ car.brandName }}</td>
       <td>{{ car.colorName }}</td>
+      <td>{{ car.brandName }}</td>
       <td>{{ car.dailyPrice }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.description }}</td>
     </tr>
   </tbody>
-</table>
-
-<div class="row" *ngIf="dataLoaded == true">
-  <div *ngFor="let car of cars" class="card col-3" style=" width: 30% ; margin: 8px">
-    <img src="https://www.seat.com/content/dam/public/seat-website/carworlds/compare/default-image/ghost.png" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">{{ car.brandName }} {{ car.carName }}</h5>
-      <p class="card-text">{{ car.description }}</p>
-    </div>
-    <section style="float: inline-end; margin-bottom: 8px;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"> Model Year : {{ car.modelYear }}</li>
-        <li class="list-group-item">Price : {{ car.dailyPrice }} TL / day</li>
-        <li class="list-group-item">Color : {{ car.colorName }}</li>
-      </ul>
-      <div class="card-body">
-        <section style="float: right">
-          <button type="button" class="btn btn-secondary">Rent</button>
-        </section>
-        <section style="float: left">
-          <button type="button" class="btn btn-secondary">Details</button>
-        </section>
-      </div>
-    </section>  
-  </div>
-</div>
+</table> -->

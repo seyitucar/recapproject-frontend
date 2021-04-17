@@ -14,10 +14,10 @@ export class RentalComponent implements OnInit {
   constructor(private rentalService:RentalService) { }
 
   ngOnInit(): void {
-    this.getRentalDetails();
+    this.getRentals();
   }
 
-  getRentalDetails () {
+  getRentals () {
       this.rentalService.getRentals().subscribe((response) => {
          this.rentals = response.data;
          this.dataLoaded = true;

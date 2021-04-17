@@ -1,0 +1,21 @@
+<div *ngIf="dataLoaded == false" class="spinner-border text-secondary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <table *ngIf="dataLoaded != false" class="table">
+      <thead class="table-secondary">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Customer Name & Surname</th>
+          <th scope="col">Company Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customerDetail of customerDetails">
+          <td>{{customerDetail.id}}</td>
+          <td>{{customerDetail.firstName}} {{customerDetail.lastName}}</td>
+          <td>{{customerDetail.companyName}}</td>
+        </tr>
+      </tbody>
+    </table>
+    

@@ -1,16 +1,84 @@
-<div class="card mb-3">
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div *ngFor="let image of carImages let i = index" [class]="sliderItemActive(i)">
-        <img src="{{carImageBasePath}}{{image.imagePath}}" class="d-block w-100" alt="...">
+<!-- <div class="card rounded-0">
+    <div class="card-header text-center rounded-0">
+      <div class="card-body">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let image of carImages" [class]="getCurrentSlideClass(image)">
+          <img src="{{carImageBasePath}}{{image.imagePath}}" class="d-block w-100" alt="..." style="width: auto; height: 500px;">
+        </div>
       </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div> 
+    <div style="text-align:center"  aria-current="true" ><h4>
+  </h4></div> -->
+
+  <div class="card rounded-0 mt-4">
+    <div class="card-header text-center rounded-0 mt-4">
+      <div class="card-body">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner  d-flex "
+             style="height: 50vh; min-height: 20rem; max-height: 30rem">
+    
+              <div *ngFor="let image of carImages; index as i; first as firstImage"
+              
+              class="carousel-item align-self-center"
+                [ngClass]="{ active: firstImage }"
+              style="height: 100%; width: 100%">
+                 <img
+              src="{{carImageBasePath}}{{image.imagePath}}"
+              class=""
+              style="height: 100%; width: 100%; object-fit: contain"
+              alt="imageUrl + image.imagePath"
+            />
+              </div>
+             </div>
+              <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+  
+  <table class="table">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Car Name</th>
+        <th scope="col">Color Name></th>
+        <th scope="col">Brand Name</th>
+        <th scope="col">Daily Price</th>
+        <th scope="col">Model Year</th>
+        <th scope="col">Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ carDetail.id }}</td>
+        <td>{{ carDetail.carName }}</td>
+        <td>{{ carDetail.colorName }}</td>
+        <td>{{ carDetail.brandName }}</td>
+        <td>{{ carDetail.dailyPrice | currency }}</td>
+        <td>{{ carDetail.modelYear }}</td>
+        <td>{{ carDetail.description }}</td>
+        <td>
+          <button (click)="addToCart(carDetail)" class="btn btn-success">Rent</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

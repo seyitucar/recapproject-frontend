@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
-import{FormsModule} from "@angular/forms"
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
+import{FormsModule, ReactiveFormsModule} from "@angular/forms"
 import{BrowserAnimationsModule} from "@angular/platform-browser/animations"
 
 
@@ -18,7 +18,22 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import {ToastrModule} from "ngx-toastr";
-import { CartSummaryComponent } from './components/cart-summary/cart-summary.component'
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { FilterColorPipePipe } from './pipes/filter-color-pipe.pipe';
+import { FilterBrandPipePipe } from './pipes/filter-brand-pipe.pipe';
+import { FilterCarComponent } from './components/filter-car/filter-car.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +48,21 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     VatAddedPipe,
     FilterPipePipe,
     CartSummaryComponent,
+    FilterColorPipePipe,
+    FilterBrandPipePipe,
+    FilterCarComponent,
+    CarAddComponent,
+    BrandAddComponent,
+    ColorAddComponent,
+    LoginComponent,
+    RegisterComponent,
+    BrandListComponent,
+    BrandUpdateComponent,
+    CarListComponent,
+    CarUpdateComponent,
+    ColorListComponent,
+    ColorUpdateComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -40,11 +70,14 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

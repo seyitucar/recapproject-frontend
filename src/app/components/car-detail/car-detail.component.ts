@@ -80,8 +80,4 @@ export class CarDetailComponent implements OnInit {
     }
   }
 
-  createAdd() {
-
-  }
-
 }

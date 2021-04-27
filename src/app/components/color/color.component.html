@@ -1,18 +1,29 @@
 <ul class="list-group">
-
   <div class="mb-3">
     <label for="filterColorText" class="form-label">Renk Ara!</label>
-    <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText" placeholder="Renk giriniz">
+    <input
+      type="text"
+      [(ngModel)]="filterColorText"
+      class="form-control"
+      id="filterColorText"
+      placeholder="Renk giriniz"
+    />
   </div>
 
-  <li (click)="cleanCurrentColor()" [class]="getAllColorClass()" routerLink="/cars">Tümünü Gör</li>
+  <li
+    (click)="cleanCurrentColor()"
+    [class]="getAllColorClass()"
+    routerLink="/cars"
+  >
+    Tümünü Gör
+  </li>
   <li class="list-group-item list-group-item-secondary" aria-current="true">
     Renkler
   </li>
   <li
     (click)="setCurrentColor(color)"
     routerLink="/cars/color/{{ color.id }}"
-    *ngFor="let color of colors | filterColorPipe:filterColorText"
+    *ngFor="let color of colors | filterColorPipe: filterColorText"
     [class]="getCurrentColorClass(color)"
   >
     {{ color.colorName }}

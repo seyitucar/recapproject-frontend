@@ -79,7 +79,7 @@ export class CarComponent implements OnInit {
   }
 
   addToCart(car: Car) {
-    if (car.modelYear < 2020) {
+    if (car.modelYear < 2018) {
       this.toastrService.error(
         'Bu araç kiralanamaz',
         car.brandName + ' ' + car.carName

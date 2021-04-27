@@ -65,6 +65,7 @@
         <th scope="col">Model Year</th>
         <th scope="col">Description</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -77,7 +78,10 @@
         <td>{{ carDetail.modelYear }}</td>
         <td>{{ carDetail.description }}</td>
         <td>
-          <button (click)="addToCart(carDetail)" class="btn btn-success">Rent</button>
+          <button (click)="addToCart(carDetail)" class="btn btn-primary">Sepete Ekle</button>
+        </td>
+        <td>
+          <button type="button" routerLink="/rentals/car/{{ carDetail.id }}" class="btn btn-secondary"> Kirala</button>
         </td>
       </tr>
     </tbody>

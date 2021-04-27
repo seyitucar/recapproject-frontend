@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,FormControl,Validators} from "@angular/forms"
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Brand } from 'src/app/models/brand';
+import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -12,11 +14,19 @@ import { CarService } from 'src/app/services/car.service';
 export class CarAddComponent implements OnInit {
 
   carAddForm : FormGroup;
+  brands : Brand[] = [];
 
-  constructor(private formBuilder:FormBuilder, private carService:CarService, private toastrService:ToastrService, private router:Router) { }
+  constructor(
+    private formBuilder:FormBuilder, 
+    private carService:CarService,
+    private toastrService:ToastrService,
+    private router:Router,
+    private brandService:BrandService
+     ) { }
 
   ngOnInit(): void {
     this.createCarAddForm();
+    this.getBrands();
   }
 
   createCarAddForm(){
@@ -47,6 +57,13 @@ export class CarAddComponent implements OnInit {
     } else {
       this.toastrService.error("Formunuz Eksik","Dikkat")
     }    
+  }
+
+  getBrands(){
+    this.brandService.getBrands().subscribe((response)=>{
+      this.brands = response.data
+    })
+
   }
 
 }

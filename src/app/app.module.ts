@@ -34,6 +34,8 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
     CarUpdateComponent,
     ColorListComponent,
     ColorUpdateComponent,
+    RentalAddComponent,
+    PaymentComponent,
 
   ],
   imports: [

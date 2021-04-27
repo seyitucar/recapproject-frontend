@@ -12,32 +12,44 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { LoginComponent } from './components/login/login.component';
+import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { LoginGuard } from './guards/login.guard';
 
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},
+
   {path:"cars",component:CarComponent},
-  {path:"carlist",component:CarListComponent},
-  {path:"cars/color/:colorId", component:CarComponent},
   {path:"cars/brand/:brandId", component:CarComponent},
   {path:"cars/cardetail/:carId", component: CarDetailComponent},
   {path:"cars/filter/:brandId/:colorId",component:CarComponent},
   {path:"cars/brand/:brandId/color/:colorId",component:CarComponent},
   {path:"cars/:brandId/:colorId", component: CarComponent },
-  {path:"brands",component:BrandListComponent},
-  {path:"rentals",component:RentalComponent},
+  {path:"cars/color/:colorId", component:CarComponent},
   {path:"cars/add",component:CarAddComponent, canActivate:[LoginGuard]},
+
+  {path:"carlist",component:CarListComponent},
+  {path:"carlist/car/:carId",component:CarUpdateComponent},
+
+  {path:"brands",component:BrandListComponent},
   {path:"brands/add",component:BrandAddComponent},
   {path:"brands/update/:brandId",component:BrandUpdateComponent},
+
   {path:"colors",component:ColorListComponent},
   {path:"colors/add",component:ColorAddComponent},
   {path:"colors/update/:colorId",component:ColorUpdateComponent},
+
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-  {path:"carlist/car/:carId",component:CarUpdateComponent},
+
+  {path:"rentals",component:RentalComponent},
+  {path:"rentals/car/:carId",component:RentalAddComponent},
+  {path:"rentals/add",component:RentalAddComponent},
+
+  {path:"payment",component:PaymentComponent},
 
 ]
 

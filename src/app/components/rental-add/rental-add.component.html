@@ -1,0 +1,28 @@
+<form [formGroup]="rentalAddForm" class="form row">
+    <div class="col-md-6">
+      <label for="rentDate" class="form-label">Teslim alinacak tarih</label>
+      <div class="form-group mb-3">
+        <input
+          type="date"
+          id="rentDate"
+          formControlName="rentDate"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="returnDate" class="form-label">Teslim edilecek tarih</label>
+      <div class="form-group mb-3">
+        <input
+          type="date"
+          id="returnDate"
+          formControlName="returnDate"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </form>
+
+  <div class="card-footer">
+    <button class="btn btn-fill btn-primary mb-2 me-2" (click)="startModel()">Ekle</button>
+</div>

@@ -26,8 +26,6 @@ const routes: Routes = [
   {path:"cars/brand/:brandId", component:CarComponent},
   {path:"cars/cardetail/:carId", component: CarDetailComponent},
   {path:"cars/filter/:brandId/:colorId",component:CarComponent},
-  {path:"cars/brand/:brandId/color/:colorId",component:CarComponent},
-  {path:"cars/:brandId/:colorId", component: CarComponent },
   {path:"cars/color/:colorId", component:CarComponent},
   {path:"cars/add",component:CarAddComponent, canActivate:[LoginGuard]},
 
@@ -50,6 +48,7 @@ const routes: Routes = [
   {path:"rentals/add",component:RentalAddComponent},
 
   {path:"payment",component:PaymentComponent},
+  {path:"payment/car/:carId",component:PaymentComponent},
 
 ]
 

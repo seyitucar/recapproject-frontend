@@ -26,7 +26,7 @@ export class CarComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRouted.params.subscribe(params=>{
-      if(params["brandId"] && params["colorId"]){
+      if(params["brandId"]&&params["colorId"]){
         this.getCarsByBrandIdAndColorId(params["brandId"],params["colorId"]);
       }
       else if(params["colorId"]){
@@ -61,13 +61,11 @@ export class CarComponent implements OnInit {
     });
   }
 
-  getCarsByBrandIdAndColorId(brandId:number, colorId:number) {
-    this.carService
-      .getCarsByBrandIdAndColorId(brandId,colorId)
-      .subscribe((response) => {
-        this.cars = response.data;
-        console.log("çalıştı")
-      });
+  getCarsByBrandIdAndColorId(brandId:number,colorId:number){
+    this.carService.getCarsByBrandIdAndColorId(brandId,colorId).subscribe(response=>{
+      this.cars=response.data;
+      console.log("getCarsByBrandIdAndColorId metodu çalıştı")
+    })
   }
 
   getCarImage(car: Car) {

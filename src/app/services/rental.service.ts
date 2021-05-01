@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
+import { RentalDetail } from '../models/rentalDetail';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 
@@ -23,9 +24,9 @@ export class RentalService {
     return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
 
-  getRentalDetails(): Observable<ListResponseModel<Rental>> {
+  getRentalDetails(): Observable<ListResponseModel<RentalDetail>> {
     let newPath = this.apiUrl + 'rentals/getrentaldetails';
-    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
+    return this.httpClient.get<ListResponseModel<RentalDetail>>(newPath);
   } 
 
   add(rental: Rental): Observable<ResponseModel> {
@@ -42,9 +43,7 @@ export class RentalService {
 
   delete(rental: Rental): Observable<SingleResponseModel<Rental>> {
     return this.httpClient.post<SingleResponseModel<Rental>>(
-      this.apiUrl + 'rentals/delete',
-      rental
-    );
+      this.apiUrl + 'rentals/delete',rental);
     
   }
 

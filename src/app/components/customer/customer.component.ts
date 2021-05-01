@@ -9,6 +9,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class CustomerComponent implements OnInit {
   customers: Customer[] = [];
+  customer : Customer;
   dataLoaded = false;
 
   constructor(private customerService:CustomerService) {}
@@ -23,4 +24,17 @@ export class CustomerComponent implements OnInit {
         this.dataLoaded = true;
       });
   }
+
+  getCustomerById(id:number) {
+    this.customerService.getById(id).subscribe((response) => {
+        this.customer = response.data;
+      });
+  }
+
+  getCustomerByUserId(id:number) {
+    this.customerService.getCustomerByUserId(id).subscribe((response) => {
+        this.customer = response.data;
+      });
+  }
+
 }

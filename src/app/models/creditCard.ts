@@ -6,7 +6,7 @@ export interface CreditCard {
     cardNumber: string;
     expMonth:number;
     expYear:number;
-    cvv: string;
+    cvv: number;
     cardType:string;
     cardLimit:number;
 }

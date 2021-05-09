@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-<button class="btn btn-primary me-md-2" type="button" routerLink="/brands/add"> Yeni Marka Ekle</button>
+<button class="btn btn-primary me-md-2" type="button" routerLink="/brands/add"> Add a New Brand</button>
     </div>
     <br>
     <div>
@@ -19,8 +19,8 @@
                 <td>{{ brand.id }}</td>
                 <td>{{ brand.brandName }}</td>
                 <td class="float-right">
-                  <button class="btn btn-danger me-2" (click)="deleteBrand(brand)">Sil</button>
-                  <button class="btn btn-warning me-2" routerLink="update/{{brand.id}}">Güncelle</button>
+                  <button class="btn btn-danger me-2" (click)="deleteBrand(brand)">Delete</button>
+                  <button class="btn btn-warning me-2" routerLink="update/{{brand.id}}">Update</button>
                 </td>
               </tr>
             </tbody>

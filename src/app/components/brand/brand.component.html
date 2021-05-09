@@ -1,12 +1,12 @@
 <ul class="list-group">
   <div class="mb-3">
-    <label for="filterBrandText" class="form-label">Marka Ara!</label>
+    <label for="filterBrandText" class="form-label">Search a Brand!</label>
     <input
       type="text"
       [(ngModel)]="filterBrandText"
       class="form-control"
       id="filterBrandText"
-      placeholder="Marka giriniz"
+      placeholder="Enter Brand"
     />
   </div>
 
@@ -15,10 +15,10 @@
     [class]="getAllBrandClass()"
     routerLink="/cars"
   >
-    Tümünü Gör
+    See All
   </li>
   <li class="list-group-item list-group-item-secondary" aria-current="true">
-    Markalar
+    Brands
   </li>
   <li
     (click)="setCurrentBrand(brand)"
@@ -30,4 +30,4 @@
   </li>
 </ul>
 
-<h5 *ngIf="currentBrand">{{ currentBrand.brandName }} seçtiniz</h5>
+<h5 *ngIf="currentBrand">You chooese {{ currentBrand.brandName }} </h5>

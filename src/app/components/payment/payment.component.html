@@ -1,18 +1,36 @@
+<!-- Modal 1-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Easy Pay</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Would you like to save your credit card for your next shopping?
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="submit"
+        (click)="checkOutAndSaveCard()" class="btn btn-secondary col-md-5" data-bs-dismiss="modal">
+          Yes, save my card and complete payment.
+        </button>
+        <button type="button" (click)="checkOut()" class="btn btn-primary col-md-5" data-bs-dismiss="modal">
+          No, dont save my card and just complete payment.
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <h4 class="mb-3">Payment</h4>
 <div class="row">
   <div class="row col-md-8 me-2">
     <Form [formGroup]="creditCardAddForm">
       <div class="my-3">
         <div *ngFor="let cardType of cardTypes" class="form-check">
-          <input
-            type="radio"
-            name="cardType"
-            value="{{ cardType }}"
-            (change)="radioChangeHandler($event)"
-            id="{{cardType}}"
-            formControlName="cardType"
-            required
-          />
+          <input type="radio" name="cardType" value="{{ cardType }}" (change)="radioChangeHandler($event)"
+            id="{{ cardType }}" formControlName="cardType" required />
           <label class="form-check-label" for="credit">{{ cardType }}</label>
         </div>
       </div>
@@ -20,112 +38,86 @@
       <div class="row gy-3">
         <div class="col-md-6">
           <label for="nameSurname" class="form-label">Name on card</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nameSurname"
-            formControlName="nameSurname"
-            placeholder=""
-            required
-          />
+          <input type="text" class="form-control" id="nameSurname" formControlName="nameSurname" placeholder=""
+            required />
           <small class="text-muted">Full name as displayed on card</small>
           <div class="invalid-feedback">Name on card is required</div>
         </div>
 
         <div class="col-md-6">
           <label for="cardNumber" class="form-label">Credit card number</label>
-          <input
-            type="text"
-            class="form-control"
-            id="cardNumber"
-            formControlName="cardNumber"
-            placeholder=""
-            required
-          />
+          <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber" placeholder=""
+            required />
           <div class="invalid-feedback">Credit card number is required</div>
         </div>
 
         <div class="col-md-2">
           <label for="expMonth" class="form-label">Exp Month</label>
-          <input
-            type="number"
-            class="form-control"
-            id="expMonth"
-            formControlName="expMonth"
-            placeholder=""
-            required
-          />
+          <input type="number" class="form-control" id="expMonth" formControlName="expMonth" placeholder="" required />
 
           <div class="invalid-feedback">Expiration month required</div>
         </div>
 
         <div class="col-md-2">
           <label for="expYear" class="form-label">Exp Year</label>
-          <input
-            type="number"
-            class="form-control"
-            id="expYear"
-            formControlName="expYear"
-            placeholder=""
-            required
-          />
+          <input type="number" class="form-control" id="expYear" formControlName="expYear" placeholder="" required />
 
           <div class="invalid-feedback">Expiration year date required</div>
         </div>
 
         <div class="col-md-2">
           <label for="cvv" class="form-label">CVV</label>
-          <input
-            type="number"
-            class="form-control"
-            id="cvv"
-            placeholder=""
-            formControlName="cvv"
-            required
-          />
+          <input type="number" class="form-control" id="cvv" placeholder="" formControlName="cvv" required />
           <div class="invalid-feedback">Security code required</div>
         </div>
       </div>
-
       <hr class="my-4" />
 
-      <button
+      <!-- <button
         class="w-100 btn btn-primary btn-lg"
         type="submit"
-        (click)="checkOut()"
-      >
+        (click)="checkOut()">
         Continue to checkout
+      </button> -->
+
+      <button type="button" class="btn btn-primary mb-3 me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+       Complete Payment
       </button>
     </Form>
   </div>
 
+
   <div class="row col-md-4 me-2">
     <div class="card">
-      <img
-        class="card-img-top"
-        *ngIf="car"
-        src="{{ carImageBasePath }}{{ getCarImage() }}"
-        alt="Card image cap"
-      />
+      <img class="card-img-top" *ngIf="car" src="{{ carImageBasePath }}{{ getCarImage() }}" alt="Card image cap" />
       <div class="card-body" *ngIf="car">
-        <h5 class="card-footer">İşlem Özeti</h5>
+        <h5 class="card-footer">Your Rental Summary</h5>
         <header class="card-text">
-          <h4 class="me-2 mb-3">
-            {{ car.brandName }} {{ car.carName }}
-          </h4>
+          <h4 class="me-2 mb-3">{{ car.brandName }} {{ car.carName }}</h4>
         </header>
-        <p class="card-text me-2">
-          Günlük Araç Fiyatı: {{ car.dailyPrice }}
-        </p>
-        <p class="card-text me-2">Toplam Gün Sayısı : {{ totalDay }}</p>
+        <p class="card-text me-2">Daily Car Price: {{ car.dailyPrice }}</p>
+        <p class="card-text me-2">Total Rental Day : {{ totalDay }}</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted"
-          >Toplam Tutar :
+        <small class="text-muted">Total Price :
           <h2>{{ totalPrice }} TL</h2>
         </small>
       </div>
     </div>
   </div>
+</div>
 
+<div class="row mb-3">
+    <div *ngFor="let creditCard of creditCards" class="card1 me-2 mb-2">
+      <div class="upper1">
+        <h6>Registered Credit Card</h6>     
+      </div>
+      <div class="lower2">
+        <button type="button" (click)="useRegisteredCard(creditCard)" class="btn btn-primary btn-sm mb-3 me-2">Use This</button>
+      </div>
+      <div class="lower1">
+        <h5>{{creditCard.nameSurname}}</h5> <span>{{creditCard.cardNumber}}</span> <br>
+        <span>Limit {{creditCard.cardLimit}} TL</span>
+      </div>
+    </div>
 </div>

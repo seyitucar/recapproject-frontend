@@ -2,7 +2,7 @@
   <main class="form-signin">
     <form [formGroup]="loginForm">
 
-      <h1 class="h3 mb-3 fw-normal">Giriş Yap</h1>
+      <h1 class="h3 mb-3 fw-normal">LogIn</h1>
 
       <div class="form-floating">
         <input
@@ -12,7 +12,7 @@
           id="floatingInput"
           placeholder="name@example.com"
         />
-        <label for="floatingInput">Eposta Adresi</label>
+        <label for="floatingInput">Email</label>
       </div>
       <div class="form-floating">
         <input
@@ -22,16 +22,16 @@
           id="floatingPassword"
           placeholder="Password"
         />
-        <label for="floatingPassword">Parola</label>
+        <label for="floatingPassword">Password</label>
       </div>
 
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me" /> Beni Hatırla
+          <input type="checkbox" value="remember-me" /> Remember Me!
         </label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" (click)="login()">
-        Giriş Yap
+        LogIn
       </button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
     </form>

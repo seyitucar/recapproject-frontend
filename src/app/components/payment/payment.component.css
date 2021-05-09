@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+body1 {
+    font-family: 'Maven Pro', sans-serif
+}
+
+.card1 {
+    height: 150px;
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 14px;
+    position: relative;
+    color: #fff;
+    background-image: url(https://i.imgur.com/5rm6bLu.jpg);
+    z-index: 5;
+    background-size: cover;
+    opacity: 1;
+    border: none
+}
+
+.card1::before {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    content: "";
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 14px;
+    background: rgb(63, 94, 251);
+    background: linear-gradient(90deg, rgba(63, 94, 251, 1) 0%, rgba(240, 50, 89, 1) 100%);
+    opacity: 0.8
+}
+
+.card1::after {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    content: "";
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 14px;
+    background: rgb(63, 94, 251);
+    background: linear-gradient(90deg, rgba(63, 94, 251, 1) 0%, rgba(240, 50, 89, 1) 100%);
+    clip-path: polygon(28% 13%, 48% 45%, 75% 63%, 100% 99%, 0 100%, 0% 60%, 0 0)
+}
+
+.upper1 {
+    display: flow-root;
+    position: relative;
+    justify-content: right;
+    z-index: 1
+}
+
+.upper1 h6 {
+    font-size: 15px
+}
+
+.upper1 h4 {
+    font-size: 20px;
+    text-transform: uppercase
+}
+
+.lower1 {
+    position: absolute;
+    bottom: 15px;
+    z-index: 1
+}
+
+.lower2 {
+    position: absolute;
+    bottom: 85px;
+    left: 210px;
+    z-index: 1
+}

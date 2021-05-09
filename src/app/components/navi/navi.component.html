@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand">CarRental</a>
@@ -31,12 +33,25 @@
         </li>
         <app-cart-summary></app-cart-summary>
       </ul>
-      <div class="text-end">
+
+      <div *ngIf="!isLogin()" class="text-end">
         <button type="button" routerLink="/login" class="btn btn-outline-light me-2">
-          Giriş Yap
+          LogIn
         </button>
-        <button type="button" routerLink="/register" class="btn btn-warning">Üye Ol</button>
+        <button type="button" routerLink="/register" class="btn btn-warning">Register</button>
       </div>
+
+      <div *ngIf="isLogin()" class="dropdown show">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+         <span>{{currentUser}}</span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" (click) = "logOut()">Log out</a></li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </nav>
+
+

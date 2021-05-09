@@ -7,20 +7,20 @@
 </div>
 
 <div class="mb-3">
-  <label for="filterText" class="form-label">Araç Ara!</label>
+  <label for="filterText" class="form-label">Search a Car!</label>
   <input
     type="text"
     [(ngModel)]="filterText"
     class="form-control"
     id="filterText"
-    placeholder="Araç adı giriniz"
+    placeholder="Search By Car Detail"
   />
 </div>
 
 <app-filter-car></app-filter-car>
 
 <div *ngIf="filterText.length > 1" class="alert alert-warning">
-  {{ filterText }} aradınız
+  You searched{{ filterText }}
 </div>
 
 <div class="row" *ngIf="dataLoaded == true">

@@ -78,10 +78,10 @@
         <td>{{ carDetail.modelYear }}</td>
         <td>{{ carDetail.description }}</td>
         <td>
-          <button (click)="addToCart(carDetail)" class="btn btn-primary">Sepete Ekle</button>
+          <button (click)="addToCart(carDetail)" class="btn btn-primary">Add to Cart</button>
         </td>
         <td>
-          <button type="button" routerLink="/rentals/car/{{ carDetail.id }}" class="btn btn-secondary"> Kirala</button>
+          <button type="button" routerLink="/rentals/car/{{ carDetail.id }}" class="btn btn-secondary">Rent</button>
         </td>
       </tr>
     </tbody>

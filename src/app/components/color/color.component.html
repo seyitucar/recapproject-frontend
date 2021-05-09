@@ -1,12 +1,12 @@
 <ul class="list-group">
   <div class="mb-3">
-    <label for="filterColorText" class="form-label">Renk Ara!</label>
+    <label for="filterColorText" class="form-label">Search Color!</label>
     <input
       type="text"
       [(ngModel)]="filterColorText"
       class="form-control"
       id="filterColorText"
-      placeholder="Renk giriniz"
+      placeholder="Enter Color"
     />
   </div>
 
@@ -15,10 +15,10 @@
     [class]="getAllColorClass()"
     routerLink="/cars"
   >
-    Tümünü Gör
+    See All
   </li>
   <li class="list-group-item list-group-item-secondary" aria-current="true">
-    Renkler
+    Colors
   </li>
   <li
     (click)="setCurrentColor(color)"
@@ -31,4 +31,4 @@
 </ul>
 <br />
 
-<h5 *ngIf="currentColor">{{ currentColor.colorName }} seçtiniz</h5>
+<h5 *ngIf="currentColor">You choosed {{ currentColor.colorName }}</h5>

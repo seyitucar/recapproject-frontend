@@ -1,6 +1,6 @@
 <div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-<button class="btn btn-primary me-md-2" routerLink="/colors/add"> Yeni Renk Ekle</button>
+<button class="btn btn-primary me-md-2" routerLink="/colors/add"> Add a New Color</button>
     </div>
     <br>
     <div>
@@ -17,8 +17,8 @@
                 <td>{{ color.id }}</td>
                 <td>{{ color.colorName }}</td>
                 <td class="float-right">
-                  <button class="btn btn-danger me-2" (click)="deleteColor(color)">Sil</button>
-                  <button class="btn btn-warning me-2" routerLink="update/{{color.id}}">Güncelle</button>
+                  <button class="btn btn-danger me-2" (click)="deleteColor(color)">Delete</button>
+                  <button class="btn btn-warning me-2" routerLink="update/{{color.id}}">Update</button>
                 </td>
               </tr>
             </tbody>

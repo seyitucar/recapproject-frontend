@@ -3,7 +3,7 @@
     <div class="col-md-5">
       <select class="form-select" id="brandselect" [(ngModel)]="currentBrandId">
         <option [ngValue]="undefined" disabled selected>
-          --- Marka Seçiniz ---
+          --- Choose a Brand ---
         </option>
         <option
           *ngFor="let brand of brands"
@@ -17,7 +17,7 @@
     <div class="col-md-5">
       <select class="form-select" id="colorselect" [(ngModel)]="currentColorId">
         <option [ngValue]="undefined" disabled selected>
-          --- Renk Seçiniz ---
+          --- Choose a Color ---
         </option>
         <option
           *ngFor="let color of colors"

@@ -1,7 +1,7 @@
 <div *ngIf="dataLoaded == false" class="spinner-border text-secondary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
-
+ 
 <table *ngIf="dataLoaded == true" class="table">
     <thead class="table-secondary">
       <tr>
@@ -17,19 +17,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let rental1 of rentals">
-        <td>{{rental1.id}}</td>
-        <td>{{rental1.brandName}}</td>
-        <td>{{rental1.carName}}</td>
-        <td>{{rental1.firstName}}</td>
-        <td>{{rental1.lastName}}</td>
-        <td>{{rental1.companyName}}</td>
-        <td>{{rental1.rentDate}}</td>
-        <td>{{rental1.returnDate}}</td>
-        <td>
-          <button class="btn btn-danger me-2" (click)="deleteRental(rental)">Sil</button>
+      <tr *ngFor="let rental of rentals">
+        <td>{{rental.id}}</td>
+        <td>{{rental.brandName}}</td>
+        <td>{{rental.carName}}</td>
+        <td>{{rental.firstName}}</td>
+        <td>{{rental.lastName}}</td>
+        <td>{{rental.companyName}}</td>
+        <td>{{rental.rentDate}}</td>
+        <td>{{rental.returnDate}}</td>
+        <td class="col-md-3">
+          <button class="btn btn-danger me-2 mb-2" (click)="delete(rental)">Delete</button> 
+          <button class="btn btn-primary me-2 mb-2" (click)="endRental(rental)">End</button>
         </td>
       </tr>
     </tbody>
   </table>
-  

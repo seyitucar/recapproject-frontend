@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
-import { RentalDetail } from '../models/rentalDetail';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 
@@ -24,9 +23,19 @@ export class RentalService {
     return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
 
-  getRentalDetails(): Observable<ListResponseModel<RentalDetail>> {
+  getRentalsByCustomerId(customerId:number): Observable<ListResponseModel<Rental>> {
+    let newPath = this.apiUrl + 'rentals/getrentalsbycustomerid?customerid='+customerId;
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
+  }
+
+  getRentalsByCarId(carId:number): Observable<ListResponseModel<Rental>> {
+    let newPath = this.apiUrl + 'rentals/getrentalsbycarid?carid='+carId;
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
+  }
+
+  getRentalDetails(): Observable<ListResponseModel<Rental>> {
     let newPath = this.apiUrl + 'rentals/getrentaldetails';
-    return this.httpClient.get<ListResponseModel<RentalDetail>>(newPath);
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   } 
 
   add(rental: Rental): Observable<ResponseModel> {
@@ -44,7 +53,6 @@ export class RentalService {
   delete(rental: Rental): Observable<SingleResponseModel<Rental>> {
     return this.httpClient.post<SingleResponseModel<Rental>>(
       this.apiUrl + 'rentals/delete',rental);
-    
   }
 
   isCarAvailable(rental:Rental): Observable<ResponseModel> {
@@ -52,9 +60,9 @@ export class RentalService {
     return this.httpClient.post<ResponseModel>(newPath, rental);
   }
 
-  endRental(carId:number): Observable<ResponseModel> {
-    let newApiUrl = this.apiUrl + "rentals/endrental?carId=" + carId;
-    return this.httpClient.get<ResponseModel>(newApiUrl);
+  endRental(rental:Rental): Observable<SingleResponseModel<Rental>> {
+    let newApiUrl = this.apiUrl + "rentals/endrental";
+    return this.httpClient.post<SingleResponseModel<Rental>>(newApiUrl, rental);
   }
 
 }

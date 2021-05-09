@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 import { CartService } from 'src/app/services/cart.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car',
@@ -15,29 +16,28 @@ export class CarComponent implements OnInit {
 
   carImageBasePath = 'https://localhost:44350/Images/';
   dataLoaded = true;
-  filterText = "";
+  filterText = '';
 
   constructor(
     private carService: CarService,
     private activatedRouted: ActivatedRoute,
     private toastrService: ToastrService,
-    private cartService: CartService
+    private cartService: CartService,
+    private rentalService: RentalService
   ) {}
 
   ngOnInit(): void {
-    this.activatedRouted.params.subscribe(params=>{
-      if(params["brandId"]&&params["colorId"]){
-        this.getCarsByBrandIdAndColorId(params["brandId"],params["colorId"]);
-      }
-      else if(params["colorId"]){
-        this.getCarsByColor(params["colorId"]);
-      }
-      else if(params["brandId"]){
-        this.getCarsByBrand(params["brandId"]);
-      }else {
+    this.activatedRouted.params.subscribe((params) => {
+      if (params['brandId'] && params['colorId']) {
+        this.getCarsByBrandIdAndColorId(params['brandId'], params['colorId']);
+      } else if (params['colorId']) {
+        this.getCarsByColor(params['colorId']);
+      } else if (params['brandId']) {
+        this.getCarsByBrand(params['brandId']);
+      } else {
         this.getCars();
       }
-    })
+    });
   }
 
   getCars() {
@@ -61,11 +61,13 @@ export class CarComponent implements OnInit {
     });
   }
 
-  getCarsByBrandIdAndColorId(brandId:number,colorId:number){
-    this.carService.getCarsByBrandIdAndColorId(brandId,colorId).subscribe(response=>{
-      this.cars=response.data;
-      console.log("getCarsByBrandIdAndColorId metodu çalıştı")
-    })
+  getCarsByBrandIdAndColorId(brandId: number, colorId: number) {
+    this.carService
+      .getCarsByBrandIdAndColorId(brandId, colorId)
+      .subscribe((response) => {
+        this.cars = response.data;
+        console.log('getCarsByBrandIdAndColorId metodu çalıştı');
+      });
   }
 
   getCarImage(car: Car) {

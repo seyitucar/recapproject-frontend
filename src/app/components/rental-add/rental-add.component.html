@@ -1,13 +1,13 @@
 <form [formGroup]="rentalAddForm">
   <div class="form-group col-md-6">
-    <label for="rentDate" class="form-label">Teslim alinacak tarih</label>
+    <label for="rentDate" class="form-label">Pick Up Date</label>
     <div class="form-group mb-3">
       <input class="form-control" type="date" id="rentDate" formControlName="rentDate"  />
     </div>
   </div>
   
   <div class="form-group col-md-6">
-    <label for="returnDate" class="form-label">Teslim edilecek tarih</label>
+    <label for="returnDate" class="form-label">Delivery Date</label>
     <div class="form-group mb-3">
       <input type="date" id="returnDate" formControlName="returnDate" class="form-control" />
     </div>
@@ -15,7 +15,7 @@
 
   <div class="card-footer">
     <button type="button" class="btn btn-fill btn-primary mb-2 me-2" (click)="addRental()" >
-      Ekle
+      Next
     </button>
   </div>
   
